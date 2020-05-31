@@ -283,9 +283,9 @@
       <SubType>compile</SubType>
       <Link>uart.h</Link>
     </Compile>
-    <Compile Include="..\arduFPGA-app-common\util-exp.h">
+    <Compile Include="..\arduFPGA-app-common\util-boot.h">
       <SubType>compile</SubType>
-      <Link>util-exp.h</Link>
+      <Link>util-boot.h</Link>
     </Compile>
     <Compile Include="def.h">
       <SubType>compile</SubType>
