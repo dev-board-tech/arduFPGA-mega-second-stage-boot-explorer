@@ -156,12 +156,12 @@
 
 /*********************************************************************************************************************************/
 
-#define GUI_UTIL_FILE_INCLUDE											"util-boot.h"
+#define GUI_UTIL_FILE_INCLUDE											"app-sec-boot.h"
 #define GUI_UPPER_LIMIT_ROW												0
 #define GUI_LOWER_LIMIT_ROW												7
 #define GUI_LIST_OF_DISPLAYED_EXTENSIONS								{"APP"} // Upper cases
-#define GUI_ACT_FUNC_ON_FILE_SELECT(uSD, spi_screen, screen_buf)		util_app_load(uSD, spi_screen, screen_buf)
-#define GUI_ACT_AT_uSD_INSERT(uSD, spi_screen, screen_buf)				util_design_update(uSD, spi_screen, screen_buf)
+#define GUI_ACT_FUNC_ON_FILE_SELECT(uSD, spi_screen, screen_buf)		app_app_load(uSD, spi_screen, screen_buf)
+#define GUI_ACT_AT_uSD_INSERT(uSD, spi_screen, screen_buf)				app_design_update(uSD, spi_screen, screen_buf)
 
 typedef struct {
 	int16_t x_min;
