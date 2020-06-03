@@ -146,14 +146,6 @@
 "$(ToolchainDir)\avr-objcopy" -O binary "$(OutputFileName).elf" "exp.bin"</PostBuildEvent>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="..\arduFPGA-app-common\25flash.c">
-      <SubType>compile</SubType>
-      <Link>25flash.c</Link>
-    </Compile>
-    <Compile Include="..\arduFPGA-app-common\25flash.h">
-      <SubType>compile</SubType>
-      <Link>25flash.h</Link>
-    </Compile>
     <Compile Include="..\arduFPGA-app-common\app-sec-boot.h">
       <SubType>compile</SubType>
       <Link>app-sec-boot.h</Link>
@@ -166,13 +158,21 @@
       <SubType>compile</SubType>
       <Link>delay.h</Link>
     </Compile>
-    <Compile Include="..\arduFPGA-app-common\fat_fs\hex_string.c">
+    <Compile Include="..\arduFPGA-app-common\device\25flash.c">
       <SubType>compile</SubType>
-      <Link>fat_fs\hex_string.c</Link>
+      <Link>25flash.c</Link>
     </Compile>
-    <Compile Include="..\arduFPGA-app-common\fat_fs\hex_string.h">
+    <Compile Include="..\arduFPGA-app-common\device\25flash.h">
       <SubType>compile</SubType>
-      <Link>fat_fs\hex_string.h</Link>
+      <Link>25flash.h</Link>
+    </Compile>
+    <Compile Include="..\arduFPGA-app-common\device\ssd1306.c">
+      <SubType>compile</SubType>
+      <Link>ssd1306.c</Link>
+    </Compile>
+    <Compile Include="..\arduFPGA-app-common\device\ssd1306.h">
+      <SubType>compile</SubType>
+      <Link>ssd1306.h</Link>
     </Compile>
     <Compile Include="..\arduFPGA-app-common\fat_fs\inc\diskio.h">
       <SubType>compile</SubType>
@@ -270,14 +270,6 @@
       <SubType>compile</SubType>
       <Link>spi.h</Link>
     </Compile>
-    <Compile Include="..\arduFPGA-app-common\ssd1306.c">
-      <SubType>compile</SubType>
-      <Link>ssd1306.c</Link>
-    </Compile>
-    <Compile Include="..\arduFPGA-app-common\ssd1306.h">
-      <SubType>compile</SubType>
-      <Link>ssd1306.h</Link>
-    </Compile>
     <Compile Include="..\arduFPGA-app-common\uart.c">
       <SubType>compile</SubType>
       <Link>uart.c</Link>
@@ -285,6 +277,14 @@
     <Compile Include="..\arduFPGA-app-common\uart.h">
       <SubType>compile</SubType>
       <Link>uart.h</Link>
+    </Compile>
+    <Compile Include="..\arduFPGA-app-common\util-fat.h">
+      <SubType>compile</SubType>
+      <Link>util-fat.h</Link>
+    </Compile>
+    <Compile Include="..\arduFPGA-app-common\util.h">
+      <SubType>compile</SubType>
+      <Link>util.h</Link>
     </Compile>
     <Compile Include="def.h">
       <SubType>compile</SubType>
