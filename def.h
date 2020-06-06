@@ -50,6 +50,7 @@
 #define BOOT_STAT_USR_APP_RUNNING	(1 << 2)
 #define BOOT_STAT_APP_PGM_WR_EN		(1 << 3)
 #define BOOT_STAT_IO_RST			(1 << 4)
+#define BOOT_STAT_DEBUG_EN			(1 << 7)
 
 #define KBD_U_DIR					DDRA
 #define KBD_U_PORT					PORTA
