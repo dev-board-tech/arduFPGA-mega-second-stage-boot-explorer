@@ -7,7 +7,7 @@
 #include <stdint.h>
 
 #define IMPLEMENTED
-#define USE_DESIGN_UPGRADE
+//#define USE_DESIGN_UPGRADE
 #define GUI_EXPLORER
 
 #define F_CPU						16000000
@@ -29,8 +29,11 @@
 #define FLASH_APP_USER_START_ADDR		0x140000
 
 #define FLASH_APP_ROM_OFFSET				0x00000
+#define FLASH_APP_ROM_ZIZE					0x20000
 #define FLASH_APP_RAM_OFFSET				0x20000
+#define FLASH_APP_RAM_ZIZE					0x20000
 #define FLASH_APP_EEP_OFFSET				0x40000
+#define FLASH_APP_EEP_SIZE					0x00400
 #define FLASH_APP_PATH_OFFSET				0x42000
 #define FLASH_APP_MEMORY_SIZES_OFFSET		0x43000
 #define FLASH_APP_MEMORY_SIZES_PGM_OFFSET	0x4
@@ -39,6 +42,7 @@
 
 
 /* These IO's are placed in SRAM data space, we need to subtract 0x20 value to address them correctly. */
+#define SEC_REG_ADDR				_SFR_IO8(0xD8)
 #define F_CNT_L						_SFR_IO8(0xDB)
 #define F_CNT_H						_SFR_IO8(0xDC)
 #define F_DATA_L					_SFR_IO8(0xDD)
@@ -51,6 +55,12 @@
 #define BOOT_STAT_APP_PGM_WR_EN		(1 << 3)
 #define BOOT_STAT_IO_RST			(1 << 4)
 #define BOOT_STAT_DEBUG_EN			(1 << 7)
+
+#define BOOT_VECTOR_MAIN			(0xFC02)
+#define BOOT_VECTOR_SET_SERVICE_VECT	(0xFC03)
+#define BOOT_VECTOR_FLASH_WRITE		(0xFC04)
+#define BOOT_VECTOR_FLASH_DES_ERASE	(0xFC05)
+#define BOOT_VECTOR_FLASH_DES_WRITE	(0xFC06)
 
 #define KBD_U_DIR					DDRA
 #define KBD_U_PORT					PORTA
@@ -162,7 +172,7 @@
 #define GUI_LOWER_LIMIT_ROW												7
 #define GUI_LIST_OF_DISPLAYED_EXTENSIONS								{"APP"} // Upper cases
 #define GUI_ACT_FUNC_ON_FILE_SELECT(uSD, spi_screen, screen_buf)		app_app_load(uSD, spi_screen, screen_buf)
-#define GUI_ACT_FUNC_AT_uSD_INSERT(uSD, spi_screen, screen_buf)			app_design_update(uSD, spi_screen, screen_buf)
+#define GUI_ACT_FUNC_AT_uSD_INSERT(uSD, spi_screen, screen_buf)			app_card_inserted(uSD, spi_screen, screen_buf)
 //#define GUI_ACT_FUNC_ON_LEFT_BTN_PRESS(uSD, spi_screen, screen_buf)													app_left(uSD, spi_screen, screen_buf)
 //#define GUI_ACT_FUNC_ON_RIGHT_BTN_PRESS(uSD, spi_screen, screen_buf)												app_right(uSD, spi_screen, screen_buf)
 
