@@ -6,9 +6,9 @@
 #include <stdint.h>
 #include <stdint.h>
 
-#define USE_ST7735
+//#define USE_ST7735
 //#define USE_ST7789
-//#define USE_SSD1306
+#define USE_SSD1306
 
 #ifdef USE_ST7735
 #define DISPLAY_DRIVER_FILE				"device/st7735.h"
