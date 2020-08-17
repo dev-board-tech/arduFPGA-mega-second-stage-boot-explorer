@@ -27,7 +27,7 @@
 #define MAX_DISK_NR						1
 #define SSD1306_USE_NO_BUF
 //#define ST7735S_128x128
-#define ST7735_BW_MODE
+//#define ST7735_BW_MODE
 
 //#define MAX_ALLOWED_PATH_LEN_BUF		64
 //#define MAX_ARROWED_FILE_NAME_LEN_BUF	32
