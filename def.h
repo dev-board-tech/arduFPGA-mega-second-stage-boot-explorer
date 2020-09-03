@@ -29,8 +29,8 @@
 //#define ST7735S_128x128
 //#define ST7735_BW_MODE
 
-//#define MAX_ALLOWED_PATH_LEN_BUF		64
-//#define MAX_ARROWED_FILE_NAME_LEN_BUF	32
+#define MAX_ALLOWED_PATH_LEN_BUF		64
+#define MAX_ALLOWED_FILE_NAME_LEN_BUF	32
 
 #include "def_arduboy_mega.h"
 
@@ -85,7 +85,7 @@
 #define GUI_APP_FILE_INCLUDE																						"app-sec-boot.h"
 #define GUI_LIST_OF_DISPLAYED_EXTENSIONS																			{"APP"} // Upper cases
 #define GUI_ACT_FUNC_ON_FILE_SELECT(uSD, spi_screen, screen_buf)													app_app_load(uSD, spi_screen, screen_buf)
-#define GUI_ACT_FUNC_AT_uSD_INSERT(uSD, spi_screen, screen_buf)														app_card_inserted(uSD, spi_screen, screen_buf)
+#define GUI_ACT_FUNC_ON_FS_MOUNTED(uSD, spi_screen, screen_buf)														app_fs_mounted(uSD, spi_screen, screen_buf)
 //#define GUI_ACT_FUNC_ON_LEFT_BTN_PRESS(uSD, spi_screen, screen_buf)												app_left(uSD, spi_screen, screen_buf)
 //#define GUI_ACT_FUNC_ON_RIGHT_BTN_PRESS(uSD, spi_screen, screen_buf)												app_right(uSD, spi_screen, screen_buf)
 
