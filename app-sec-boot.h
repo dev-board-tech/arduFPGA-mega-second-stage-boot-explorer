@@ -27,7 +27,7 @@
 #include <string.h>
 #include <avr/pgmspace.h>
 #include <avr/eeprom.h>
-#include "spi.h"
+#include "driver/spi.h"
 #include "mmc_sd_spi.h"
 #include "def.h"
 #include "fat_fs/inc/ff.h"
@@ -113,13 +113,17 @@ bool app_design_app_update(mmc_sd_t *uSD, spi_t *spi_screen, uint8_t *screen_buf
 				f_rewind(&filObject);
 				gui_print_status(spi_screen, screen_buf, PSTR("Erasing explorer..."), 0);
 				_24flash_write_status(&flash_des, 0x80);
-				for (cnt = FLASH_APP_EXPLORER_START_ADDR; cnt < f_size(&filObject) + 0x1000 + FLASH_APP_EXPLORER_START_ADDR; cnt += 0x1000) {
+				for (cnt = FLASH_APP_EXPLORER_START_ADDR; cnt < FLASH_SIZE + 0x1000 + FLASH_APP_EXPLORER_START_ADDR; cnt += 0x1000) {
 					_25flash_erase(&flash_des, cnt);
 					DISPLAY_FUNC_DRAW_RECTANGLE(spi_screen, NULL, screen_buf, (cnt - FLASH_APP_EXPLORER_START_ADDR) >> (f_size(&filObject) > 0x10000 ? 10 : (f_size(&filObject) > 0x8000 ? 9 : 8)), 32, 16, 8, true, true);
 				}
 // Write the updated explorer to the FLASH.
 				gui_print_status(spi_screen, screen_buf, PSTR("Updating explorer..."), 0);
-				for (cnt = FLASH_APP_EXPLORER_START_ADDR; cnt < f_size(&filObject) + FLASH_APP_EXPLORER_START_ADDR; cnt += 0x40) {
+				uint32_t file_size = f_size(&filObject);
+				if(file_size > FLASH_SIZE) {
+					file_size = FLASH_SIZE;
+				}
+				for (cnt = FLASH_APP_EXPLORER_START_ADDR; cnt < file_size + FLASH_APP_EXPLORER_START_ADDR; cnt += 0x40) {
 					if(f_read(&filObject, buf, 0x40, &b_read) == FR_OK) {
 						_25flash_write(&flash_des, cnt, buf, b_read);
 						DISPLAY_FUNC_DRAW_RECTANGLE(spi_screen, NULL, screen_buf, (cnt - FLASH_APP_EXPLORER_START_ADDR) >> (f_size(&filObject) > 0x10000 ? 10 : (f_size(&filObject) > 0x8000 ? 9 : 8)), 32, 1, 8, true, true);

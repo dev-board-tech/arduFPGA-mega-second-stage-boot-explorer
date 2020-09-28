@@ -194,6 +194,22 @@
       <SubType>compile</SubType>
       <Link>st7789.h</Link>
     </Compile>
+    <Compile Include="..\arduFPGA-app-common\driver\spi.c">
+      <SubType>compile</SubType>
+      <Link>spi.c</Link>
+    </Compile>
+    <Compile Include="..\arduFPGA-app-common\driver\spi.h">
+      <SubType>compile</SubType>
+      <Link>spi.h</Link>
+    </Compile>
+    <Compile Include="..\arduFPGA-app-common\driver\uart.c">
+      <SubType>compile</SubType>
+      <Link>uart.c</Link>
+    </Compile>
+    <Compile Include="..\arduFPGA-app-common\driver\uart.h">
+      <SubType>compile</SubType>
+      <Link>uart.h</Link>
+    </Compile>
     <Compile Include="..\arduFPGA-app-common\fat_fs\inc\diskio.h">
       <SubType>compile</SubType>
       <Link>fat_fs\inc\diskio.h</Link>
@@ -277,22 +293,6 @@
     <Compile Include="..\arduFPGA-app-common\mmc_sd_spi.h">
       <SubType>compile</SubType>
       <Link>mmc_sd_spi.h</Link>
-    </Compile>
-    <Compile Include="..\arduFPGA-app-common\spi.c">
-      <SubType>compile</SubType>
-      <Link>spi.c</Link>
-    </Compile>
-    <Compile Include="..\arduFPGA-app-common\spi.h">
-      <SubType>compile</SubType>
-      <Link>spi.h</Link>
-    </Compile>
-    <Compile Include="..\arduFPGA-app-common\uart.c">
-      <SubType>compile</SubType>
-      <Link>uart.c</Link>
-    </Compile>
-    <Compile Include="..\arduFPGA-app-common\uart.h">
-      <SubType>compile</SubType>
-      <Link>uart.h</Link>
     </Compile>
     <Compile Include="..\arduFPGA-app-common\util-fat.h">
       <SubType>compile</SubType>

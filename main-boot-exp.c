@@ -23,8 +23,8 @@
 #include <stdint.h>
 #include <stdio.h>
 #include "def.h"
-#include "uart.h"
-#include "spi.h"
+#include "driver/uart.h"
+#include "driver/spi.h"
 #include "gui.h"
 #include "kbd.h"
 #include DISPLAY_DRIVER_FILE
