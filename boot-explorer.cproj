@@ -147,13 +147,10 @@
     </PreBuildEvent>
     <PostBuildEvent>"$(ToolchainDir)\avr-objcopy" -O binary "$(OutputFileName).elf" "../../arduFPGA-iCE40UP5K-game-console-images-release/uSD-tree/mega/arduboy/exp.bin"
 "$(ToolchainDir)\avr-objcopy" -O binary "$(OutputFileName).elf" "../../arduFPGA-iCE40UP5K-images-release/uSD-tree/mega/arduboy/exp.bin"
-"$(ToolchainDir)\avr-objcopy" -O binary "$(OutputFileName).elf" "../../arduFPGA-game-console-factory-tst-app/factory_check_uSD_tree/root/mega/arduboy/exp.bin"</PostBuildEvent>
+"$(ToolchainDir)\avr-objcopy" -O binary "$(OutputFileName).elf" "../../arduFPGA-game-console-factory-tst-app/factory_check_uSD_tree/root/mega/arduboy/exp.bin"
+"$(ToolchainDir)\avr-objcopy" -O binary "$(OutputFileName).elf" "../../arduFPGA-game-console-lyra-wallet\atmega-fw/exp.bin"</PostBuildEvent>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="..\arduFPGA-app-common\def_arduboy_mega.h">
-      <SubType>compile</SubType>
-      <Link>def_arduboy_mega.h</Link>
-    </Compile>
     <Compile Include="..\arduFPGA-app-common\delay.c">
       <SubType>compile</SubType>
       <Link>delay.c</Link>
@@ -306,6 +303,9 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="def.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="def_arduboy_mega.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="ffconf.h">

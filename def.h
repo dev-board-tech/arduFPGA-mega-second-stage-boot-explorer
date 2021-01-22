@@ -6,6 +6,8 @@
 #include <stdint.h>
 #include <stdint.h>
 
+//#define KBD_USE_INIT
+
 //#define USE_ST7735
 //#define USE_ST7789
 #define USE_SSD1306
