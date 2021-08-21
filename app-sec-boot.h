@@ -290,8 +290,8 @@ void app_app_load(mmc_sd_t *uSD, spi_t *spi_screen, uint8_t *screen_buf) {
 		gui_print_status(spi_screen, screen_buf, PSTR("Erasing FLASH APP..."), 0);
 		_24flash_write_status(&flash_des, 0x80);
 		for(cnt = FLASH_APP_USER_START_ADDR; cnt < FLASH_APP_USER_START_ADDR + FLASH_APP_ROM_ZIZE; cnt += 0x1000) {
+			DISPLAY_FUNC_DRAW_RECTANGLE(spi_screen, NULL, screen_buf, (cnt - FLASH_APP_USER_START_ADDR) >> 9, 32, 8, 8, true, true);
 			_25flash_erase(&flash_des, cnt);
-			DISPLAY_FUNC_DRAW_RECTANGLE(spi_screen, NULL, screen_buf, (cnt - FLASH_APP_USER_START_ADDR) >> 10, 32, 4, 8, true, true);
 		}
 		// Write the selected APP from uSD to the FLASH.
 		f_rewind(&filObject);
@@ -305,12 +305,15 @@ void app_app_load(mmc_sd_t *uSD, spi_t *spi_screen, uint8_t *screen_buf) {
 				delay_ms(2000);
 				return;
 			}
+			if(!b_read) {
+				break;
+			}
 			_25flash_write(&flash_des, FLASH_APP_USER_START_ADDR + cnt, flash_buf, b_read);
 			DISPLAY_FUNC_DRAW_RECTANGLE(spi_screen, NULL, screen_buf, cnt >> 8, 32, 2, 8, true, true);
 		}
 		_24flash_write_status(&flash_des, 0xBC);
 		f_close(&filObject);
-		// Check if a EEPROM file is on the uSD, if it is copy the data into internal emulated EEPROM.
+		// Check if a EEPROM file is on the uSD, if it is copy the data into internal emulated EEPROM, and on the APP FLASH EEPROM area.
 		util_fat_change_extension(nameBuff, nameBuff, PSTR("eep"));
 		if(f_open(&filObject, nameBuff, FA_READ) == FR_OK) {
 			//fsize = f_size(&filObject);
